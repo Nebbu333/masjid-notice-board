@@ -10,9 +10,18 @@ class KhutbahsScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 2,
-        title: Text('Khutbahs', style: GoogleFonts.poppins(fontWeight: FontWeight.bold, color: Color(0xFF1A3D2B))),
+        title: Text(
+          'Khutbahs',
+          style: GoogleFonts.poppins(
+            fontWeight: FontWeight.bold,
+            color: Color(0xFF1A3D2B),
+          ),
+        ),
         actions: [
-          IconButton(icon: Icon(Icons.search, color: Colors.green.shade700), onPressed: () {}),
+          IconButton(
+            icon: Icon(Icons.search, color: Colors.green.shade700),
+            onPressed: () {},
+          ),
         ],
       ),
       backgroundColor: const Color(0xFFF8FDF8),
@@ -32,8 +41,16 @@ class KhutbahsScreen extends StatelessWidget {
             Expanded(
               child: ListView(
                 children: [
-                  _khutbahCard('Imam Zaid Shakir', 'Friday, Dec 5', 'Charity: The Heart of Islam'),
-                  _khutbahCard('Imam Suhaib Webb', 'Friday, Nov 28', 'Patience in Difficult Times'),
+                  _khutbahCard(
+                    'Imam Zaid Shakir',
+                    'Friday, Dec 5',
+                    'Charity: The Heart of Islam',
+                  ),
+                  _khutbahCard(
+                    'Imam Suhaib Webb',
+                    'Friday, Nov 28',
+                    'Patience in Difficult Times',
+                  ),
                 ],
               ),
             ),
@@ -51,7 +68,12 @@ class KhutbahsScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: Colors.green.shade200),
       ),
-      child: Text(label, style: GoogleFonts.poppins(color: selected ? Colors.white : Colors.green.shade700)),
+      child: Text(
+        label,
+        style: GoogleFonts.poppins(
+          color: selected ? Colors.white : Colors.green.shade700,
+        ),
+      ),
     );
   }
 
@@ -62,15 +84,33 @@ class KhutbahsScreen extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 6),
       child: ListTile(
         leading: Icon(Icons.menu_book, color: Colors.amber, size: 28),
-        title: Text(title, style: GoogleFonts.poppins(fontWeight: FontWeight.bold)),
-        subtitle: Text('$speaker • $date', style: GoogleFonts.poppins(fontSize: 13)),
+        title: Text(
+          title,
+          style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
+        ),
+        subtitle: Text(
+          '$speaker • $date',
+          style: GoogleFonts.poppins(fontSize: 13),
+        ),
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            IconButton(icon: Icon(Icons.article, color: Colors.green.shade700), onPressed: () {}),
-            IconButton(icon: Icon(Icons.headphones, color: Colors.green.shade700), onPressed: () {}),
-            IconButton(icon: Icon(Icons.play_circle, color: Colors.green.shade700), onPressed: () {}),
-            IconButton(icon: Icon(Icons.download, color: Colors.amber), onPressed: () {}),
+            IconButton(
+              icon: Icon(Icons.article, color: Colors.green.shade700),
+              onPressed: () {},
+            ),
+            IconButton(
+              icon: Icon(Icons.headphones, color: Colors.green.shade700),
+              onPressed: () {},
+            ),
+            IconButton(
+              icon: Icon(Icons.play_circle, color: Colors.green.shade700),
+              onPressed: () {},
+            ),
+            IconButton(
+              icon: Icon(Icons.download, color: Colors.amber),
+              onPressed: () {},
+            ),
           ],
         ),
       ),

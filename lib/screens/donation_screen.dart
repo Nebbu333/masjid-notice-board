@@ -10,10 +10,14 @@ class DonationScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 2,
-        title: Text('Donate', style: GoogleFonts.poppins(fontWeight: FontWeight.bold, color: Color(0xFF1A3D2B))),
-        actions: [
-          Icon(Icons.receipt, color: Colors.green.shade700),
-        ],
+        title: Text(
+          'Donate',
+          style: GoogleFonts.poppins(
+            fontWeight: FontWeight.bold,
+            color: Color(0xFF1A3D2B),
+          ),
+        ),
+        actions: [Icon(Icons.receipt, color: Colors.green.shade700)],
       ),
       backgroundColor: const Color(0xFFF8FDF8),
       body: Padding(
@@ -21,12 +25,25 @@ class DonationScreen extends StatelessWidget {
         child: Column(
           children: [
             Card(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
               color: Colors.amber.shade100,
               child: ListTile(
-                leading: Icon(Icons.volunteer_activism, color: Colors.amber, size: 32),
-                title: Text('Eid Charity Drive: $2,500/$5,000 Raised', style: GoogleFonts.poppins(fontWeight: FontWeight.bold)),
-                subtitle: LinearProgressIndicator(value: 0.5, color: Colors.amber, backgroundColor: Colors.amber.shade200),
+                leading: Icon(
+                  Icons.volunteer_activism,
+                  color: Colors.amber,
+                  size: 32,
+                ),
+                title: Text(
+                  'Eid Charity Drive: \$2,500/\$5,000 Raised',
+                  style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
+                ),
+                subtitle: LinearProgressIndicator(
+                  value: 0.5,
+                  color: Colors.amber,
+                  backgroundColor: Colors.amber.shade200,
+                ),
               ),
             ),
             const SizedBox(height: 18),
@@ -41,17 +58,36 @@ class DonationScreen extends StatelessWidget {
             ),
             const SizedBox(height: 18),
             Card(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(14),
+              ),
               elevation: 2,
               child: ListTile(
                 leading: Icon(Icons.payment, color: Colors.green.shade700),
-                title: Text('Payment Method', style: GoogleFonts.poppins(fontWeight: FontWeight.w600)),
-                subtitle: Text('Credit Card, PayPal, Apple Pay, Google Pay', style: GoogleFonts.poppins(fontSize: 12)),
-                trailing: Icon(Icons.arrow_forward_ios, size: 16, color: Colors.green.shade300),
+                title: Text(
+                  'Payment Method',
+                  style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+                ),
+                subtitle: Text(
+                  'Credit Card, PayPal, Apple Pay, Google Pay',
+                  style: GoogleFonts.poppins(fontSize: 12),
+                ),
+                trailing: Icon(
+                  Icons.arrow_forward_ios,
+                  size: 16,
+                  color: Colors.green.shade300,
+                ),
               ),
             ),
             const SizedBox(height: 18),
-            Text('Donation History', style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: Color(0xFF1A3D2B))),
+            Text(
+              'Donation History',
+              style: GoogleFonts.poppins(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: Color(0xFF1A3D2B),
+              ),
+            ),
             const SizedBox(height: 8),
             Expanded(
               child: ListView(
@@ -74,7 +110,11 @@ class DonationScreen extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       ),
       onPressed: () {},
-      child: Text(amount != null ? '$label\n$amount' : label, textAlign: TextAlign.center, style: GoogleFonts.poppins(color: Colors.white)),
+      child: Text(
+        amount != null ? '$label\n$amount' : label,
+        textAlign: TextAlign.center,
+        style: GoogleFonts.poppins(color: Colors.white),
+      ),
     );
   }
 
@@ -85,8 +125,14 @@ class DonationScreen extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 6),
       child: ListTile(
         leading: Icon(Icons.volunteer_activism, color: Colors.amber, size: 28),
-        title: Text('$type Donation', style: GoogleFonts.poppins(fontWeight: FontWeight.w600)),
-        subtitle: Text('Amount: $amount\nDate: $date', style: GoogleFonts.poppins(fontSize: 12)),
+        title: Text(
+          '$type Donation',
+          style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+        ),
+        subtitle: Text(
+          'Amount: $amount\nDate: $date',
+          style: GoogleFonts.poppins(fontSize: 12),
+        ),
         trailing: Icon(Icons.receipt, color: Colors.green.shade700),
       ),
     );

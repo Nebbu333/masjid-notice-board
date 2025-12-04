@@ -28,67 +28,70 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       backgroundColor: const Color(0xFFF8FDF8),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(25),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 40),
-              Center(
-                child: Icon(Icons.mosque,
-                    size: 80, color: Color(0xFF1A3D2B)),
-              ),
-              const SizedBox(height: 20),
-              Text(
-                "Welcome Back",
-                style: GoogleFonts.poppins(
-                  fontSize: 26,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF1A3D2B),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(25),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 40),
+                Center(
+                  child: Icon(Icons.mosque,
+                      size: 80, color: Color(0xFF1A3D2B)),
                 ),
-              ),
-              const SizedBox(height: 25),
-              _buildInput("Email", emailController),
-              const SizedBox(height: 15),
-              _buildInput("Password", passwordController, isPassword: true),
-              const SizedBox(height: 10),
-              Align(
-                alignment: Alignment.centerRight,
-                child: Text("Forgot Password?",
-                    style: GoogleFonts.poppins(
-                        color: Color(0xFF1A3D2B), fontSize: 13)),
-              ),
-              const SizedBox(height: 25),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: loginUser,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF1A3D2B),
-                    padding: const EdgeInsets.symmetric(vertical: 15),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
+                const SizedBox(height: 20),
+                Text(
+                  "Welcome Back",
+                  style: GoogleFonts.poppins(
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF1A3D2B),
                   ),
-                  child: Text("Login",
+                ),
+                const SizedBox(height: 25),
+                _buildInput("Email", emailController),
+                const SizedBox(height: 15),
+                _buildInput("Password", passwordController, isPassword: true),
+                const SizedBox(height: 10),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Text("Forgot Password?",
                       style: GoogleFonts.poppins(
-                          fontSize: 16, color: Colors.white)),
+                          color: Color(0xFF1A3D2B), fontSize: 13)),
                 ),
-              ),
-              const SizedBox(height: 20),
-              Center(
-                child: GestureDetector(
-                  onTap: () => Navigator.pushNamed(context, "/signup"),
-                  child: Text(
-                    "Don't have an account? Create one",
-                    style: GoogleFonts.poppins(
-                      color: Color(0xFF1A3D2B),
-                      fontSize: 14,
+                const SizedBox(height: 25),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: loginUser,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xFF1A3D2B),
+                      padding: const EdgeInsets.symmetric(vertical: 15),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                    ),
+                    child: Text("Login",
+                        style: GoogleFonts.poppins(
+                            fontSize: 16, color: Colors.white)),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Center(
+                  child: GestureDetector(
+                    onTap: () => Navigator.pushNamed(context, "/signup"),
+                    child: Text(
+                      "Don't have an account? Create one",
+                      style: GoogleFonts.poppins(
+                        color: Color(0xFF1A3D2B),
+                        fontSize: 14,
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+                const SizedBox(height: 20),
+              ],
+            ),
           ),
         ),
       ),

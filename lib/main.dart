@@ -7,15 +7,15 @@ import 'screens/imam_login.dart';
 import 'screens/khadim_dashboard.dart';
 import 'screens/maintenance_update.dart';
 import 'screens/ummah_dashboard.dart';
-import 'screens/announcements.dart';
-import 'screens/khutbahs.dart';
-import 'screens/prayer_times.dart';
-import 'screens/events.dart';
-import 'screens/donation.dart';
-import 'screens/community_board.dart';
-import 'screens/feedback.dart';
-import 'screens/profile.dart';
-import 'screens/khadim_donation.dart';
+import 'screens/announcements_screen.dart';
+import 'screens/khutbahs_screen.dart';
+import 'screens/prayer_times_screen.dart';
+import 'screens/events_screen.dart';
+import 'screens/donation_screen.dart';
+import 'screens/community_board_screen.dart';
+import 'screens/feedback_screen.dart';
+import 'screens/profile_screen.dart';
+import 'screens/khadim_donation_screen.dart';
 
 void main() {
   runApp(const MyApp());

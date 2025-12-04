@@ -9,36 +9,39 @@ class LandingPageScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFFF8FDF8),
       body: SafeArea(
-        child: Column(
-          children: [
-            const SizedBox(height: 40),
-            Icon(Icons.mosque, size: 80, color: Colors.green.shade700),
-            const SizedBox(height: 10),
-            Text(
-              "Stay Connected With Your Masjid",
-              textAlign: TextAlign.center,
-              style: GoogleFonts.poppins(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.green.shade800,
-              ),
-            ),
-            const SizedBox(height: 10),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: Text(
-                "Prayer times, khutbah updates, events, and announcements — all in one place.",
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(height: 40),
+              Icon(Icons.mosque, size: 80, color: Colors.green.shade700),
+              const SizedBox(height: 10),
+              Text(
+                "Stay Connected With Your Masjid",
                 textAlign: TextAlign.center,
                 style: GoogleFonts.poppins(
-                  fontSize: 14,
-                  height: 1.4,
-                  color: Colors.black54,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.green.shade800,
                 ),
               ),
-            ),
-            const SizedBox(height: 40),
-            Expanded(
-              child: Container(
+              const SizedBox(height: 10),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Text(
+                  "Prayer times, khutbah updates, events, and announcements — all in one place.",
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.poppins(
+                    fontSize: 14,
+                    height: 1.4,
+                    color: Colors.black54,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 40),
+              Container(
+                constraints: BoxConstraints(
+                  minHeight: MediaQuery.of(context).size.height * 0.5,
+                ),
                 margin: const EdgeInsets.symmetric(horizontal: 22),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
@@ -72,7 +75,7 @@ class LandingPageScreen extends StatelessWidget {
                         icon: Icons.volunteer_activism,
                         title: "Support & Donate",
                       ),
-                      const Spacer(),
+                      const SizedBox(height: 30),
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
@@ -125,8 +128,9 @@ class LandingPageScreen extends StatelessWidget {
                   ),
                 ),
               ),
-            ),
-          ],
+              const SizedBox(height: 20),
+            ],
+          ),
         ),
       ),
     );

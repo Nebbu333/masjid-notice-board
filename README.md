@@ -43,7 +43,7 @@ assets/
 Simple folders, easy to maintain.
 
 ⚙️ How to Run
-git clone https://github.com/YOUR_USERNAME/masjid_notice_board.git
+git clone https://github.com/Nebu333/masjid_notice_board.git
 cd masjid_notice_board
 flutter pub get
 flutter run

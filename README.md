@@ -1,16 +1,76 @@
-# masjid_notice_board
+🕌 Masjid Notice Board App
 
-A new Flutter project.
+A simple Flutter app that helps masjids show announcements, prayer times, khutbah schedules, and events.
+Made for teamwork, easy use, and real masjid needs.
 
-## Getting Started
+🌟 Features
+Main Features
 
-This project is a starting point for a Flutter application.
+Prayer Times
 
-A few resources to get you started if this is your first Flutter project:
+Announcements (add, edit, delete)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Event Calendar
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Khutbah Schedule
+
+Archive for old posts
+
+Extra
+
+Light & Dark mode
+
+Amharic, Arabic, and English
+
+Offline support
+
+Notifications for new announcements
+
+Works on phone, tablet, and big screens
+
+📂 Project Structure
+lib/
+  main.dart
+  models/
+  services/
+  screens/
+  widgets/
+  theme/
+assets/
+  sample_data.json
+
+
+Simple folders, easy to maintain.
+
+⚙️ How to Run
+git clone https://github.com/YOUR_USERNAME/masjid_notice_board.git
+cd masjid_notice_board
+flutter pub get
+flutter run
+
+
+Build APK:
+
+flutter build apk --release
+
+🌐 API
+
+AlAdhan Prayer Times API
+
+Local JSON fallback if internet goes down
+
+🛠 Built With
+
+Flutter
+
+Dart
+
+SharedPreferences
+
+Local Notifications
+
+HTTP Package
+
+👥 Team
+
+Muslimah Software Engineers building helpful tools for the Ummah.

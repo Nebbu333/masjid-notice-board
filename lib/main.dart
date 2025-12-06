@@ -1,57 +1,155 @@
 import 'package:flutter/material.dart';
-import 'screens/imam_dashboard.dart';
-import 'screens/landing_page.dart';
-import 'screens/login.dart';
-import 'screens/signup.dart';
-import 'screens/imam_login.dart';
-import 'screens/khadim_dashboard.dart';
-import 'screens/maintenance_update.dart';
-import 'screens/ummah_dashboard.dart';
-import 'screens/announcements_screen.dart';
-import 'screens/khutbahs_screen.dart';
-import 'screens/prayer_times_screen.dart';
-import 'screens/events_screen.dart';
-import 'screens/donation_screen.dart';
-import 'screens/community_board_screen.dart';
-import 'screens/feedback_screen.dart';
-import 'screens/profile_screen.dart';
-import 'screens/khadim_donation_screen.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'pages/home_page.dart';
+import 'pages/prayer_times_page.dart';
+import 'pages/events_page.dart';
+import 'pages/donations_page.dart';
+import 'utils/app_localizations.dart';
+import 'utils/app_theme.dart';
+import 'utils/theme_provider.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+
+  static _MyAppState? of(BuildContext context) =>
+      context.findAncestorStateOfType<_MyAppState>();
+}
+
+class _MyAppState extends State<MyApp> {
+  Locale _locale = const Locale('en');
+  final ThemeProvider _themeProvider = ThemeProvider();
+
+  @override
+  void initState() {
+    super.initState();
+    _themeProvider.addListener(_onThemeChanged);
+  }
+
+  @override
+  void dispose() {
+    _themeProvider.removeListener(_onThemeChanged);
+    _themeProvider.dispose();
+    super.dispose();
+  }
+
+  void _onThemeChanged() {
+    setState(() {});
+  }
+
+  void setLocale(Locale locale) {
+    setState(() {
+      _locale = locale;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Masjid Notice Board',
+      title: 'Masjid App',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      initialRoute: '/',
-      routes: {
-        '/': (ctx) => const LandingPageScreen(),
-        '/login': (ctx) => const LoginScreen(),
-        '/signup': (ctx) => const SignupScreen(),
-        '/imam-login': (ctx) => const ImamLoginScreen(),
-        '/dashboard': (ctx) => const ImamDashboardScreen(),
-        '/khadim': (ctx) => const KhadimDashboardScreen(),
-        '/maintenance': (ctx) => const MaintenanceUpdateScreen(),
-        '/ummah': (ctx) => const UmmahDashboardScreen(),
-        '/announcements': (ctx) => const AnnouncementsScreen(),
-        '/khutbahs': (ctx) => const KhutbahsScreen(),
-        '/prayer': (ctx) => const PrayerTimesScreen(),
-        '/events': (ctx) => const EventsScreen(),
-        '/donate': (ctx) => const DonationScreen(),
-        '/community': (ctx) => const CommunityBoardScreen(),
-        '/feedback': (ctx) => const FeedbackScreen(),
-        '/profile': (ctx) => const ProfileScreen(),
-        '/donations': (ctx) => const KhadimDonationScreen(),
+      theme: AppTheme.getLightTheme(_themeProvider),
+      darkTheme: AppTheme.getDarkTheme(_themeProvider),
+      themeMode: _themeProvider.themeMode,
+      locale: _locale,
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en'),
+        Locale('ar'),
+        Locale('ur'),
+      ],
+      builder: (context, child) {
+        return Directionality(
+          textDirection: _locale.languageCode == 'ar' ? TextDirection.rtl : TextDirection.ltr,
+          child: child!,
+        );
       },
+      home: HomePageWrapper(
+        setLocale: setLocale,
+        themeProvider: _themeProvider,
+      ),
+    );
+  }
+}
+
+class HomePageWrapper extends StatefulWidget {
+  final Function(Locale) setLocale;
+  final ThemeProvider themeProvider;
+
+  const HomePageWrapper({
+    super.key,
+    required this.setLocale,
+    required this.themeProvider,
+  });
+
+  @override
+  State<HomePageWrapper> createState() => _HomePageWrapperState();
+}
+
+class _HomePageWrapperState extends State<HomePageWrapper> {
+  int _currentIndex = 0;
+
+  List<Widget> get _pages => [
+        HomeContentPage(themeProvider: widget.themeProvider),
+        PrayerTimesPage(themeProvider: widget.themeProvider),
+        EventsPage(themeProvider: widget.themeProvider),
+        DonationsPage(themeProvider: widget.themeProvider),
+        MorePage(
+          setLocale: widget.setLocale,
+          themeProvider: widget.themeProvider,
+        ),
+      ];
+
+  @override
+  Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context) ?? AppLocalizations(const Locale('en'));
+
+    return Scaffold(
+      body: _pages[_currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: widget.themeProvider.primaryColor,
+        unselectedItemColor: Colors.grey,
+        items: [
+          BottomNavigationBarItem(
+            icon: const Icon(Icons.home),
+            label: localizations.home,
+          ),
+          BottomNavigationBarItem(
+            icon: const Icon(Icons.access_time),
+            label: localizations.prayerTimes,
+          ),
+          BottomNavigationBarItem(
+            icon: const Icon(Icons.event),
+            label: localizations.events,
+          ),
+          BottomNavigationBarItem(
+            icon: const Icon(Icons.favorite),
+            label: localizations.donations,
+          ),
+          BottomNavigationBarItem(
+            icon: const Icon(Icons.more_horiz),
+            label: localizations.more,
+          ),
+        ],
+      ),
     );
   }
 }
